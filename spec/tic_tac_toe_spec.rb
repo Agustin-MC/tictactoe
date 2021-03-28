@@ -327,6 +327,39 @@ describe TicTacToe do
 
       expect(TicTacToe.new(board).winner).to eq("o")
     end
+
+    it "returns 'draw' when the board is a draw" do
+      board = [
+        ["o", "o", "o", "x", "o", "o", "o", "o", "o"],
+        ["x", "x", "x", "x", "x", "o", "o", "x", "o"],
+        ["x", "x", "x", "x", "x", "o", "o", "x", "x"],
+        ["x", "x", "x", "x", "x", "x", "o", "x", "o"],
+        ["x", "x", "x", "x", "x", "o", "x", "o", "x"],
+        ["x", "x", "x", "x", "x", "o", "o", "x", "o"],
+        ["x", "x", "x", "x", "x", "x", "o", "o", "o"],
+        ["x", "x", "x", "x", "x", "o", "o", "x", "x"],
+        ["x", "x", "x", "o", "x", "x", "o", "o", "o"],
+      ]
+
+      expect(TicTacToe.new(board).winner).to eq("draw")
+    end
+
+
+    it "returns 'unfinished' when the board is a unfinished" do
+      board = [
+        ["o", "o", "o", " ", "o", "o", "o", "o", "o"],
+        ["x", "x", " ", " ", " ", "o", "o", "x", "o"],
+        ["x", "x", "x", " ", " ", "o", "o", "x", "x"],
+        [" ", " ", " ", " ", " ", " ", "o", "x", "o"],
+        [" ", " ", " ", " ", " ", "o", " ", "o", "x"],
+        [" ", " ", " ", " ", " ", "o", "o", "x", "o"],
+        [" ", " ", " ", " ", " ", " ", "o", "o", "o"],
+        [" ", " ", " ", " ", " ", "o", "o", "x", "x"],
+        [" ", " ", " ", " ", " ", " ", "o", "o", "o"],
+      ]
+
+      expect(TicTacToe.new(board).winner).to eq("unfinished")
+    end
   end
 
   describe "unfinished" do
