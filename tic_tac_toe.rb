@@ -4,6 +4,8 @@ class TicTacToe
   end
 
   def winner
+    forwardDiag = Array.new
+    backwardDiag = Array.new
     @board.each_with_index do |row,index|
       # row checks
       unless row.include?(" ")
@@ -24,30 +26,29 @@ class TicTacToe
         unless col.include?("o")
           return "x"
         end
+      end     
+
+      #diag checks
+      forwardDiag.push(@board[index][index])
+      backwardDiag.push(@board[index][-(index+1)]) 
+    end
+
+    unless forwardDiag.include?(" ")
+      unless forwardDiag.include?("x")
+        return "o"
+      end
+      unless forwardDiag.include?("o")
+        return "x"
       end
     end
-
-    row1 = @board[0]
-    row2 = @board[1]
-    row3 = @board[2]
-
-    # diagonal checks
-
-    if row1[0] == "o" && row2[1] == "o" && row3[2] == "o"
-      return "o"
-    end
-
-    if row1[2] == "o" && row2[1] == "o" && row3[0] == "o"
-      return "o"
-    end
-
-    if row1[0] == "x" && row2[1] == "x" && row3[2] == "x"
-      return "x"
-    end
-
-    if row1[2] == "x" && row2[1] == "x" && row3[0] == "x"
-      return "x"
-    end
+    unless backwardDiag.include?(" ")
+      unless backwardDiag.include?("x")
+        return "o"
+      end
+      unless backwardDiag.include?("o")
+        return "x"
+      end
+    end   
 
     #unfinished check
     @board.each do |row|
