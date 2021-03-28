@@ -78,6 +78,12 @@ class TicTacToe
       return "x"
     end
 
+    @board.each do |n|
+      if n.include? " "
+        return "unfinished"
+      end
+    end
+    
     return "draw"
   end
 end
